@@ -1,3 +1,2 @@
-# Ohjelmistotuotanto
-
-[Ohjelmistotuotanto](https://ohjelmistotuotanto-hy.github.io/)-kurssin laskareissa käytettävä Python-koodi.
+# Ohtu 2022 palautukset
+https://github.com/astranero/ohtuvarasto
