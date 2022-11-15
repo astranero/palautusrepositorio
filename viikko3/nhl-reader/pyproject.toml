@@ -6,6 +6,7 @@ authors = ["Kalle Ilves <kalle.ilves@helsinki.fi>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+requests = "^2.28.1"
 
 [tool.poetry.dev-dependencies]
 
