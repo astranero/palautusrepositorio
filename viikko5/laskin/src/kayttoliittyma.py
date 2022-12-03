@@ -44,7 +44,7 @@ class Kumoa:
         self._lue = lue
     
     def suorita(self):
-        self._sovellus.aseta_arvo(self._sovellus.previous)
+        self._sovellus.kumoa()
 
 class Kayttoliittyma:
     def __init__(self, sovellus, root):
