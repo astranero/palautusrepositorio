@@ -43,7 +43,7 @@ class TennisGame:
         return False
 
     def check_temporal_situation(self):
-        return self.temp_text[self.player1_score] + "-"  + self.temp_text[self.player2_score]
+        return self.temp_text[self.player1_score] + "-" + self.temp_text[self.player2_score]
 
     def get_score(self):
         if self.check_score_is_tie(): return self.check_tie_prints() 
