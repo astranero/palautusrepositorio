@@ -32,16 +32,27 @@ class TennisGame:
             score = self.score_equal_text["else"]
         return score
 
-    def check_player_advantage(self):
-        score_difference = self.player1_score - self.player2_score
-        if score_difference >= 0:
+    def print_player1_has_advantage(self, score_difference):
+        if score_difference > 0:
             if score_difference >= 2:
                 return self.has_advantage_text["more_than_positive_one"]
             return self.has_advantage_text[score_difference]
-        else:
+        return False
+
+    def print_player2_has_advantage(self, score_difference):
+        if score_difference < 0:
             if score_difference <= -2:
                 return self.has_advantage_text["less_than_negative_one"]
             return self.has_advantage_text[score_difference]
+        return False
+
+    def check_player_advantage(self):
+        score_difference = self.player1_score - self.player2_score
+        text_player1 =  self.print_player1_has_advantage(score_difference)
+        text_player2 =  self.print_player2_has_advantage(score_difference)
+        if text_player1: return text_player1
+        return text_player2
+            
 
     def check_score_higher_than_four(self):
         if (self.player1_score) >= 4 or (self.player2_score) >= 4:
