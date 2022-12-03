@@ -2,9 +2,11 @@ class TennisGame:
     def __init__(self, player1_name, player2_name):
         self.player1_name = player1_name
         self.player2_name = player2_name
-        self.__score = {self.player1_name: 0 , self.player2_name: 0}
-        self.score_equal = {0: "Love-All", 1: "Fifteen-All", 2: "Thirty-All", 3: "Forty-All", "else": "Deuce"}
-        self.score_advantage = {1: "Advantage player1", "more_than_positive_one": "Win for player1", -1: "Advantage player2", "less_than_negative_one": "Win for player2"}
+        self.__score = {self.player1_name: 0, self.player2_name: 0}
+        self.score_equal_text = {0: "Love-All", 1: "Fifteen-All",
+                            2: "Thirty-All", 3: "Forty-All", "else": "Deuce"}
+        self.has_advantage_text = {1: "Advantage player1", "more_than_positive_one": "Win for player1", -
+                                1: "Advantage player2", "less_than_negative_one": "Win for player2"}
         self.temp_text = {0: "Love", 1: "Fifteen", 2: "Thirty", 3: "Forty"}
 
     @property
@@ -23,19 +25,23 @@ class TennisGame:
             return True
         return False
 
-    def check_tie_prints(self):
-        try:score = self.score_equal[self.player1_score]
-        except KeyError: score = self.score_equal["else"]
+    def print_score_equal_text(self):
+        try:
+            score = self.score_equal_text[self.player1_score]
+        except KeyError:
+            score = self.score_equal_text["else"]
         return score
-    
+
     def check_player_advantage(self):
         score_difference = self.player1_score - self.player2_score
         if score_difference >= 0:
-            if score_difference >= 2: return self.score_advantage["more_than_positive_one"]
-            return self.score_advantage[score_difference]
+            if score_difference >= 2:
+                return self.has_advantage_text["more_than_positive_one"]
+            return self.has_advantage_text[score_difference]
         else:
-            if score_difference <= -2: return self.score_advantage["less_than_negative_one"]
-            return self.score_advantage[score_difference] 
+            if score_difference <= -2:
+                return self.has_advantage_text["less_than_negative_one"]
+            return self.has_advantage_text[score_difference]
 
     def check_score_higher_than_four(self):
         if (self.player1_score) >= 4 or (self.player2_score) >= 4:
@@ -46,6 +52,9 @@ class TennisGame:
         return self.temp_text[self.player1_score] + "-" + self.temp_text[self.player2_score]
 
     def get_score(self):
-        if self.check_score_is_tie(): return self.check_tie_prints() 
-        elif self.check_score_higher_than_four(): return self.check_player_advantage()
-        else:  return self.check_temporal_situation()
+        if self.check_score_is_tie():
+            return self.print_score_equal_text()
+        elif self.check_score_higher_than_four():
+            return self.check_player_advantage()
+        else:
+            return self.check_temporal_situation()
