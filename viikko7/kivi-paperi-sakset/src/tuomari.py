@@ -1,4 +1,3 @@
-
 # Luokka pitää kirjaa ensimmäisen ja toisen pelaajan pisteistä sekä tasapelien määrästä.
 class Tuomari:
     def __init__(self):
@@ -21,7 +20,6 @@ class Tuomari:
     def _tasapeli(self, eka, toka):
         if eka == toka:
             return True
-
         return False
 
     # sisäinen metodi joka tarkastaa voittaako eka pelaaja tokan
